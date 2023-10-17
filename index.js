@@ -7,12 +7,14 @@ document.querySelectorAll("button")[i].addEventListener("click", function(){
 
     var buttonInnerHTML = this.innerHTML;
     makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
     
 });
 }
 
 document.addEventListener("keypress", function(event){
     makeSound(event.key);
+    buttonAnimation(event.key);
 
 
 });
@@ -53,3 +55,11 @@ function makeSound(key){
     }
 }
 
+function buttonAnimation(currentKey){
+    var activation = document.querySelector("." + currentKey);
+    activation.classList.add("pressed");
+
+    setTimeout(function(){
+        activation.classList.remove("pressed");
+    }, 100);
+}
